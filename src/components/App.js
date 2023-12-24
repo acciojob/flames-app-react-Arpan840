@@ -3,7 +3,7 @@ import "../styles/App.css";
 
 const App = () => {
   let [name, setName] = useState({ firstName: "", secondName: "" });
-  let [count, setCount] = useState(0);
+  
   let [relationShipStatus, setRelationShipStatus] = useState("");
 
   const handleChange = (event) => {
@@ -13,12 +13,13 @@ const App = () => {
   };
 
   function showNames() {
+    let count = 0;
     let firstName = name.firstName.split("");
     let secondName = name.secondName.split("");
     for (let i = 0; i < firstName.length; i++) {
       for (let j = 0; j < secondName.length; j++) {
         if (firstName[i] === secondName[j]) {
-          setCount(count++);
+          count++;
         }
       }
     }

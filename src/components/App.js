@@ -12,6 +12,8 @@ const App = () => {
     setName((values) => ({ ...values, [name]: value }));
   };
 
+  
+
   function showNames() {
     let count = 0;
     let firstName = name.firstName.split("");
@@ -23,24 +25,37 @@ const App = () => {
         }
       }
     }
+
+    if(!name.firstName || !name.secondName)
+    {
+      setRelationShipStatus('Please Enter valid input')
+      return
+    }
     let remainingStrings = firstName.length + secondName.length - count;
     let relationShip = remainingStrings % 6;
-    if (relationShip === 1) {
-      setRelationShipStatus("Friends");
-    } else if (relationShip === 2) {
-      setRelationShipStatus("Love");
-    } else if (relationShip === 3) {
-      setRelationShipStatus("Affection");
-    } else if (relationShip === 4) {
-      setRelationShipStatus("Marriage");
-    } else if (relationShip === 5) {
-      setRelationShipStatus("Enemy");
-    } else if (relationShip === 0) {
-      setRelationShipStatus("Siblings");
-    } else {
-      setRelationShipStatus("Please Enter valid input");
+    switch (relationShip) {
+      case 1:
+        setRelationShipStatus("Friends");
+        break;
+      case 2:
+        setRelationShipStatus("Love");
+        break;
+      case 3:
+        setRelationShipStatus("Affection");
+        break;
+      case 4:
+        setRelationShipStatus("Marriage");
+        break;
+      case 5:
+        setRelationShipStatus("Enemy");
+        break;
+      case 0:
+        setRelationShipStatus("Siblings");
+        break;
+      default:
+        setRelationShipStatus("Please Enter valid input");
     }
-  }
+  };
 
   function clearData(){
     setName({
